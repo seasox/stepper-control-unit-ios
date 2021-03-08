@@ -8,14 +8,16 @@
 import Foundation
 
 public class CommandStore: ObservableObject {
-    private static let filename = Bundle.main.url(forResource: "commands", withExtension: "json")!
+    private static let filename = "commands.json"
+    private static let defaultData = try! Data(contentsOf: Bundle.main.url(forResource: "commands", withExtension: "json")!)
+    private static let defaultCommands =  try! JSONDecoder().decode([Command].self, from: CommandStore.defaultData)
     
-    private let json = JSONLoader(filename: CommandStore.filename)
+    private let json = JSONLoader(fileManager: FilesManager(), filename: CommandStore.filename)
     
     @Published var commands: [Command]
     
     func reload() {
-        let data: [Command] = json.load(orDefault: [])
+        let data: [Command] = json.load(orDefault: CommandStore.defaultCommands)
         self.commands = data
     }
     
@@ -28,15 +30,16 @@ public class CommandStore: ObservableObject {
     }
     
     init() {
-        commands = json.load(orDefault: [])
+        commands = json.load(orDefault: CommandStore.defaultCommands)
     }
 }
 
 private struct JSONLoader {
-    let filename: URL
+    let fileManager: FilesManager
+    let filename: String
     func load<T: Decodable>(orDefault: T) -> T {
         do {
-            let data = try Data(contentsOf: filename)
+            let data = try fileManager.load(fileNamed: filename)
             let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)
         } catch {
@@ -47,7 +50,7 @@ private struct JSONLoader {
     func persist<T: Encodable>(data: T) throws {
         let encoder = JSONEncoder()
         do {
-            try encoder.encode(data).write(to: filename)
+            try fileManager.save(fileNamed: filename, data: encoder.encode(data))
         } catch {
             print(error)
             throw error
