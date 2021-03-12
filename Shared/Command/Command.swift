@@ -13,7 +13,6 @@ struct Command: Identifiable, Codable, Hashable {
     let commands: [String]
     
     func run() {
-        // TODO actually run commands
-        print(commands)
+        BluetoothManager.shared.send(commands)
     }
 }
