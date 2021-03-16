@@ -10,18 +10,18 @@ import Foundation
 public class CommandStore: ObservableObject {
     private static let filename = "commands.json"
     private static let defaultData = try! Data(contentsOf: Bundle.main.url(forResource: "commands", withExtension: "json")!)
-    private static let defaultCommands =  try! JSONDecoder().decode([Command].self, from: CommandStore.defaultData)
+    private static let defaultCommands =  try! JSONDecoder().decode([ButtonCommand].self, from: CommandStore.defaultData)
     
     private let json = JSONLoader(fileManager: FilesManager(), filename: CommandStore.filename)
     
-    @Published var commands: [Command]
+    @Published var commands: [ButtonCommand]
     
     func reload() {
-        let data: [Command] = json.load(orDefault: CommandStore.defaultCommands)
+        let data: [ButtonCommand] = json.load(orDefault: CommandStore.defaultCommands)
         self.commands = data
     }
     
-    func append(_ command: Command) {
+    func append(_ command: ButtonCommand) {
         commands.append(command)
     }
     

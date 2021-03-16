@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
+    @EnvironmentObject var bluetoothManager: BluetoothManager
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
-        CommandList(showsAddDialog: false)
+        TabView {
+            CommandList(showsAddDialog: false)
+                .tabItem {
+                    Image(systemName: "video.fill")
+                    Text("Video")
+                }
+            Text("Second Tab")
+                .tabItem {
+                    Image(systemName: "camera.fill")
+                    Text("Camera")
+                }
+        }
+        //.isHidden(self.bluetoothManager.state == .unsupported)
     }
 }
 

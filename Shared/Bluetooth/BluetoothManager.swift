@@ -8,7 +8,20 @@
 import CoreBluetooth
 import Foundation
 
-class BluetoothManager {
+enum BluetoothState {
+    case unknown
+    case resetting
+    case unsupported
+    case unauthorized
+    case poweredOff
+    case poweredOn
+    case connecting
+    case connected
+}
+
+class BluetoothManager: ObservableObject {
+    
+    @Published var state: BluetoothState = .unknown
     
     static let shared = BluetoothManager(serial: BluetoothSerial())
     
@@ -20,21 +33,25 @@ class BluetoothManager {
         self.serial.delegate = self
     }
     
-    var state: CBManagerState {
-        serial.state
+    
+    func startScan() -> Bool {
+        state = .connecting
+        return serial.startScan()
     }
     
-    func startScan() {
-        serial.startScan()
+    func disconnect() {
+        state = .poweredOn
+        serial.disconnect()
     }
     
     func send(_ msg: String) {
+        print("BTM send: \(msg)")
         serial.sendMessageToDevice(msg)
     }
     
     func send(_ msgs: [String]) {
         msgs.forEach { msg in
-            serial.sendMessageToDevice(msg + "\r")
+            self.send(msg + "\r")
         }
     }
 }
@@ -42,7 +59,23 @@ class BluetoothManager {
 
 
 extension BluetoothManager: BluetoothSerialDelegate {
-    func serialDidChangeState() {
+    func serialDidChangeState(_ newState: CBManagerState) {
+        switch newState {
+        case .unknown:
+            state = .unknown
+        case .resetting:
+            state = .resetting
+        case .unsupported:
+            state = .unsupported
+        case .unauthorized:
+            state = .unauthorized
+        case .poweredOff:
+            state = .poweredOff
+        case .poweredOn:
+            state = .poweredOn
+        @unknown default:
+            state = .unknown
+        }
         print("BTM serialDidChangeState")
     }
     
@@ -52,11 +85,14 @@ extension BluetoothManager: BluetoothSerialDelegate {
         } else {
             print("BTM disconect")
         }
+        state = .poweredOn
         self.connectedPeripheral = nil
     }
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
         print("BTM discover " + peripheral.debugDescription)
-        serial.connect(toPeripheral: peripheral)
+        if state == .connecting {
+            serial.connect(toPeripheral: peripheral)
+        }
     }
     func serialDidReceiveString(_ message: String) {
         print("BTM did receive " + message)
@@ -72,6 +108,7 @@ extension BluetoothManager: BluetoothSerialDelegate {
     }
     func serialDidConnect(_ peripheral: CBPeripheral) {
         print("BTM did connect peripheral " + peripheral.debugDescription)
+        state = .connected
         self.connectedPeripheral = peripheral
     }
     func serialDidFailToConnect(_ peripheral: CBPeripheral, error: NSError?) {

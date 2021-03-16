@@ -14,7 +14,7 @@ protocol BluetoothSerialDelegate: class {
     // ** Required **
     
     /// Called when de state of the CBCentralManager changes (e.g. when bluetooth is turned on/off)
-    func serialDidChangeState()
+    func serialDidChangeState(_ newState: CBManagerState)
     
     /// Called when a peripheral disconnected
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?)
@@ -64,7 +64,7 @@ protocol BluetoothSerialType: class {
     var isPoweredOn: Bool { get }
     var state: CBManagerState { get }
     
-    func startScan()
+    func startScan() -> Bool
     func stopScan()
     
     func connect(toPeripheral: CBPeripheral)
@@ -134,13 +134,12 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        _ = isReady
     }
     
     /// Start scanning for peripherals
-    func startScan() {
+    func startScan() -> Bool {
         guard centralManager.state == .poweredOn else {
-            return
+            return false
         }
         
         // start scanning for peripherals with correct service UUID
@@ -152,6 +151,7 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         for peripheral in peripherals {
             delegate?.serialDidDiscoverPeripheral(peripheral, RSSI: nil)
         }
+        return true
     }
     
     /// Stop scanning for peripherals
@@ -182,7 +182,10 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     
     /// Send a string to the device
     func sendMessageToDevice(_ message: String) {
-        guard isReady else { return }
+        guard isReady else {
+            print("BluetoothSerial not ready to send")
+            return
+        }
         
         if let data = message.data(using: String.Encoding.utf8) {
             connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
@@ -247,12 +250,31 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        switch central.state {
+        case .poweredOn:
+            print("CBCentralManager state is now poweredOn")
+            if central.isScanning {
+                _ = startScan()
+            }
+        case .unknown:
+            print("CBCentralManager state is now unknown")
+        case .resetting:
+            print("CBCentralManager state is now resetting")
+        case .unsupported:
+            print("CBCentralManager state is now unsupported")
+        case .unauthorized:
+            print("CBCentralManager state is now unauthorized")
+        case .poweredOff:
+            print("CBCentralManager state is now poweredOff")
+        @unknown default:
+            print("CBCentralManager state is now unknown default")
+        }
         // note that "didDisconnectPeripheral" won't be called if BLE is turned off while connected
         connectedPeripheral = nil
         pendingPeripheral = nil
 
         // send it to the delegate
-        delegate?.serialDidChangeState()
+        delegate?.serialDidChangeState(central.state)
     }
     
     
