@@ -19,8 +19,6 @@ struct VideoModeView: View {
     
     var body: some View {
         VStack {
-            Button(self.bluetoothManager.state.description, action: handleConnect)
-                .disabled(self.bluetoothManager.state == .unsupported)
             VStack {
                 HStack {
                     CommandRow(command: .left)
@@ -43,14 +41,6 @@ struct VideoModeView: View {
             .disabled(self.bluetoothManager.state != .connected)
         }
         .padding(.all, 100)
-    }
-    
-    private func handleConnect() {
-        if self.bluetoothManager.state == .connected {
-            bluetoothManager.disconnect()
-        } else {
-            _ = bluetoothManager.startScan()
-        }
     }
     
     private func handleSetSpeed() {

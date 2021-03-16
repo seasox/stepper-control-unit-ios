@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct ConnectView: View {
+    
+    @EnvironmentObject var bluetoothManager: BluetoothManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(self.bluetoothManager.state.description, action: handleConnect)
+            .padding(.all, 200)
+            .disabled(self.bluetoothManager.state == .unsupported)
     }
+    
+    private func handleConnect() {
+        if self.bluetoothManager.state == .connected {
+            bluetoothManager.disconnect()
+        } else {
+            _ = bluetoothManager.startScan()
+        }
+    }
+    
 }
 
 struct ConnectView_Previews: PreviewProvider {
