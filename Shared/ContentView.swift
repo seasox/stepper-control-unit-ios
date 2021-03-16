@@ -12,19 +12,22 @@ struct ContentView: View {
     @EnvironmentObject var bluetoothManager: BluetoothManager
     
     var body: some View {
-        TabView {
-            VideoModeView(showsAddDialog: false)
-                .tabItem {
-                    Image(systemName: "video.fill")
-                    Text("Video")
-                }
-            PhotoModeView()
-                .tabItem {
-                    Image(systemName: "camera.fill")
-                    Text("Photo")
-                }
+        if bluetoothManager.state == .connected {
+            TabView {
+                VideoModeView(showsAddDialog: false)
+                    .tabItem {
+                        Image(systemName: "video.fill")
+                        Text("Video")
+                    }
+                PhotoModeView()
+                    .tabItem {
+                        Image(systemName: "camera.fill")
+                        Text("Photo")
+                    }
+            }
+        } else {
+            ConnectView()
         }
-        //.isHidden(self.bluetoothManager.state == .unsupported)
     }
 }
 
