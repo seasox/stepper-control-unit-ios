@@ -18,10 +18,10 @@ struct ContentView: View {
                     Image(systemName: "video.fill")
                     Text("Video")
                 }
-            Text("Second Tab")
+            PhotoModeView()
                 .tabItem {
                     Image(systemName: "camera.fill")
-                    Text("Camera")
+                    Text("Photo")
                 }
         }
         //.isHidden(self.bluetoothManager.state == .unsupported)
