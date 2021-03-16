@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommandList: View {
+struct VideoModeView: View {
     
     @EnvironmentObject var store: CommandStore
     @EnvironmentObject var bluetoothManager: BluetoothManager
@@ -60,7 +60,7 @@ struct CommandList: View {
 
 struct CommandList_Previews: PreviewProvider {
     static var previews: some View {
-        CommandList(showsAddDialog: false)
+        VideoModeView(showsAddDialog: false)
     }
 }
 

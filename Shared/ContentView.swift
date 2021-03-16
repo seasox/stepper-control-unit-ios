@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            CommandList(showsAddDialog: false)
+            VideoModeView(showsAddDialog: false)
                 .tabItem {
                     Image(systemName: "video.fill")
                     Text("Video")
