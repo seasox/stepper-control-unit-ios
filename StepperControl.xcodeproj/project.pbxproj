@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29B0E34F26015533003384CE /* PhotoModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E34E26015533003384CE /* PhotoModeView.swift */; };
+		29B0E35026015533003384CE /* PhotoModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E34E26015533003384CE /* PhotoModeView.swift */; };
+		29B0E35626015573003384CE /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E35526015573003384CE /* ConnectView.swift */; };
+		29B0E35726015573003384CE /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E35526015573003384CE /* ConnectView.swift */; };
 		29D4BFE225F2F7910030E874 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BFE125F2F7910030E874 /* Tests_iOS.swift */; };
 		29D4BFED25F2F7910030E874 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BFEC25F2F7910030E874 /* Tests_macOS.swift */; };
 		29D4BFEF25F2F7910030E874 /* StepperControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4BFC625F2F7910030E874 /* StepperControlApp.swift */; };
@@ -51,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29B0E34E26015533003384CE /* PhotoModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModeView.swift; sourceTree = "<group>"; };
+		29B0E35526015573003384CE /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		29D4BFC625F2F7910030E874 /* StepperControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperControlApp.swift; sourceTree = "<group>"; };
 		29D4BFC725F2F7910030E874 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29D4BFC825F2F7910030E874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				29D4C00725F2F8D90030E874 /* CommandRow.swift */,
 				29D4C01625F2FCAF0030E874 /* ButtonCommand.swift */,
 				29D4C04025F3020F0030E874 /* CommandStore.swift */,
+				29B0E34E26015533003384CE /* PhotoModeView.swift */,
+				29B0E35526015573003384CE /* ConnectView.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -366,8 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B0E34F26015533003384CE /* PhotoModeView.swift in Sources */,
 				29D4BFF125F2F7910030E874 /* ContentView.swift in Sources */,
 				29D4C00F25F2F9B90030E874 /* VideoModeView.swift in Sources */,
+				29B0E35626015573003384CE /* ConnectView.swift in Sources */,
 				29D4C09725F707030030E874 /* BluetoothSerial.swift in Sources */,
 				29D4C04125F3020F0030E874 /* CommandStore.swift in Sources */,
 				29D4C07C25F5AFBE0030E874 /* FilesManager.swift in Sources */,
@@ -382,8 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B0E35026015533003384CE /* PhotoModeView.swift in Sources */,
 				29D4BFF225F2F7910030E874 /* ContentView.swift in Sources */,
 				29D4C01025F2F9B90030E874 /* VideoModeView.swift in Sources */,
+				29B0E35726015573003384CE /* ConnectView.swift in Sources */,
 				29D4C09825F707030030E874 /* BluetoothSerial.swift in Sources */,
 				29D4C04225F3020F0030E874 /* CommandStore.swift in Sources */,
 				29D4C07D25F5AFBE0030E874 /* FilesManager.swift in Sources */,
