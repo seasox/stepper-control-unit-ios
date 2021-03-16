@@ -24,4 +24,6 @@ extension ButtonCommand {
     static let setStart = ButtonCommand(title: "Set Start", commands: [ "sid=0;cmd=set;startpoint;" ])
     static let travel =  ButtonCommand(title: "Travel", commands: [ "sid=0;cmd=set;mode=2;" ])
     static let setEnd = ButtonCommand(title: "Set End", commands: [ "sid=0;cmd=set;endpoint;" ])
+    static let runSMS = ButtonCommand(title: "Run SMS", commands: [ "sid=0;cmd=set;runSMS=1;" ])
+    static let stopSMS = ButtonCommand(title: "Stop SMS", commands: [ "sid=0;cmd=set;runSMS=0;" ])
 }

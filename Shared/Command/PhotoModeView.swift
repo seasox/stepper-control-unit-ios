@@ -9,7 +9,15 @@ import SwiftUI
 
 struct PhotoModeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextCommandView(withLabel: true, command: .exposure)
+            TextCommandView(withLabel: true, command: .offset)
+            TextCommandView(withLabel: true, command: .runtime)
+            HStack {
+                ButtonCommandView(command: .runSMS)
+                ButtonCommandView(command: .stopSMS)
+            }
+        }
     }
 }
 
