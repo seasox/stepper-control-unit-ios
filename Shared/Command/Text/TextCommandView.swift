@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct TextCommandView: View {
+    let withLabel: Bool
     @State var command: TextCommand
     var body: some View {
-        TextField(command.title, text: $command.state, onCommit: command.run)
-        .frame(maxWidth: .infinity)
-        .border(Color.red)
+        HStack {
+            if withLabel {
+                Text(command.title)
+            }
+            TextField(command.title, text: $command.state, onCommit: command.run)
+            .frame(maxWidth: .infinity)
+            .border(Color.red)
+        }
+    }
+    
+    init(withLabel l: Bool = false, command c: TextCommand) {
+        withLabel = l
+        _command = State(initialValue: c)
     }
 }
 
