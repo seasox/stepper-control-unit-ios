@@ -11,7 +11,7 @@ import SwiftUI
 struct StepperControlApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(CommandStore()).environmentObject(BluetoothManager.shared)
+            ContentView().environmentObject(BluetoothManager.shared)
         }
     }
 }

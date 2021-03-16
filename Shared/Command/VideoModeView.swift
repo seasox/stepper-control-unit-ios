@@ -9,7 +9,6 @@ import SwiftUI
 
 struct VideoModeView: View {
     
-    @EnvironmentObject var store: CommandStore
     @EnvironmentObject var bluetoothManager: BluetoothManager
     
     @State var showsAddDialog: Bool = false

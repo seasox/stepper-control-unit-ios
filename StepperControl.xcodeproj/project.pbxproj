@@ -25,10 +25,6 @@
 		29D4C01025F2F9B90030E874 /* VideoModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C00E25F2F9B90030E874 /* VideoModeView.swift */; };
 		29D4C01725F2FCAF0030E874 /* ButtonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C01625F2FCAF0030E874 /* ButtonCommand.swift */; };
 		29D4C01825F2FCAF0030E874 /* ButtonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C01625F2FCAF0030E874 /* ButtonCommand.swift */; };
-		29D4C04125F3020F0030E874 /* CommandStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C04025F3020F0030E874 /* CommandStore.swift */; };
-		29D4C04225F3020F0030E874 /* CommandStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C04025F3020F0030E874 /* CommandStore.swift */; };
-		29D4C04925F304BC0030E874 /* commands.json in Resources */ = {isa = PBXBuildFile; fileRef = 29D4C04825F304BC0030E874 /* commands.json */; };
-		29D4C04A25F304BC0030E874 /* commands.json in Resources */ = {isa = PBXBuildFile; fileRef = 29D4C04825F304BC0030E874 /* commands.json */; };
 		29D4C07C25F5AFBE0030E874 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C07B25F5AFBE0030E874 /* FilesManager.swift */; };
 		29D4C07D25F5AFBE0030E874 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C07B25F5AFBE0030E874 /* FilesManager.swift */; };
 		29D4C09725F707030030E874 /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4C09625F707030030E874 /* BluetoothSerial.swift */; };
@@ -74,8 +70,6 @@
 		29D4C00725F2F8D90030E874 /* CommandRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRow.swift; sourceTree = "<group>"; };
 		29D4C00E25F2F9B90030E874 /* VideoModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModeView.swift; sourceTree = "<group>"; };
 		29D4C01625F2FCAF0030E874 /* ButtonCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCommand.swift; sourceTree = "<group>"; };
-		29D4C04025F3020F0030E874 /* CommandStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandStore.swift; sourceTree = "<group>"; };
-		29D4C04825F304BC0030E874 /* commands.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = commands.json; sourceTree = "<group>"; };
 		29D4C07B25F5AFBE0030E874 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		29D4C09625F707030030E874 /* BluetoothSerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 		29D4C09E25F709E60030E874 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
@@ -129,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				29D4C09D25F709D30030E874 /* Bluetooth */,
-				29D4C04725F3049F0030E874 /* Resources */,
 				29D4C01525F2FC920030E874 /* Command */,
 				29D4BFC625F2F7910030E874 /* StepperControlApp.swift */,
 				29D4BFC725F2F7910030E874 /* ContentView.swift */,
@@ -191,19 +184,10 @@
 				29D4C00E25F2F9B90030E874 /* VideoModeView.swift */,
 				29D4C00725F2F8D90030E874 /* CommandRow.swift */,
 				29D4C01625F2FCAF0030E874 /* ButtonCommand.swift */,
-				29D4C04025F3020F0030E874 /* CommandStore.swift */,
 				29B0E34E26015533003384CE /* PhotoModeView.swift */,
 				29B0E35526015573003384CE /* ConnectView.swift */,
 			);
 			path = Command;
-			sourceTree = "<group>";
-		};
-		29D4C04725F3049F0030E874 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				29D4C04825F304BC0030E874 /* commands.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		29D4C09D25F709D30030E874 /* Bluetooth */ = {
@@ -340,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D4BFF325F2F7910030E874 /* Assets.xcassets in Resources */,
-				29D4C04925F304BC0030E874 /* commands.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D4BFF425F2F7910030E874 /* Assets.xcassets in Resources */,
-				29D4C04A25F304BC0030E874 /* commands.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +361,6 @@
 				29D4C00F25F2F9B90030E874 /* VideoModeView.swift in Sources */,
 				29B0E35626015573003384CE /* ConnectView.swift in Sources */,
 				29D4C09725F707030030E874 /* BluetoothSerial.swift in Sources */,
-				29D4C04125F3020F0030E874 /* CommandStore.swift in Sources */,
 				29D4C07C25F5AFBE0030E874 /* FilesManager.swift in Sources */,
 				29D4C09F25F709E60030E874 /* BluetoothManager.swift in Sources */,
 				29D4BFEF25F2F7910030E874 /* StepperControlApp.swift in Sources */,
@@ -397,7 +378,6 @@
 				29D4C01025F2F9B90030E874 /* VideoModeView.swift in Sources */,
 				29B0E35726015573003384CE /* ConnectView.swift in Sources */,
 				29D4C09825F707030030E874 /* BluetoothSerial.swift in Sources */,
-				29D4C04225F3020F0030E874 /* CommandStore.swift in Sources */,
 				29D4C07D25F5AFBE0030E874 /* FilesManager.swift in Sources */,
 				29D4C0A025F709E60030E874 /* BluetoothManager.swift in Sources */,
 				29D4BFF025F2F7910030E874 /* StepperControlApp.swift in Sources */,
