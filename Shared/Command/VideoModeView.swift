@@ -23,7 +23,7 @@ struct VideoModeView: View {
                     ButtonCommandView(command: .left)
                         .frame(maxWidth: .infinity)
                         .border(Color.red)
-                    TextCommandView(command: TextCommand(title: "Set Speed", state: "1000", commands: [ "sid=0;cmd=set;speed=%s;" ]))
+                    TextCommandView(command: .speed)
                     ButtonCommandView(command: .right)
                         .frame(maxWidth: .infinity)
                         .border(Color.red)
