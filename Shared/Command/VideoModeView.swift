@@ -20,30 +20,24 @@ struct VideoModeView: View {
         VStack {
             VStack {
                 HStack {
-                    CommandRow(command: .left)
+                    ButtonCommandView(command: .left)
                         .frame(maxWidth: .infinity)
                         .border(Color.red)
-                    TextField("Set Speed", text: self.$speed, onCommit: handleSetSpeed)
-                        .frame(maxWidth: .infinity)
-                        .border(Color.red)
-                    CommandRow(command: .right)
+                    TextCommandView(command: TextCommand(title: "Set Speed", state: "1000", commands: [ "sid=0;cmd=set;speed=%s;" ]))
+                    ButtonCommandView(command: .right)
                         .frame(maxWidth: .infinity)
                         .border(Color.red)
                 }
-                CommandRow(command: .stop)
+                ButtonCommandView(command: .stop)
                 HStack {
-                    CommandRow(command: .setStart)
-                    CommandRow(command: .travel)
-                    CommandRow(command: .setEnd)
+                    ButtonCommandView(command: .setStart)
+                    ButtonCommandView(command: .travel)
+                    ButtonCommandView(command: .setEnd)
                 }
             }
             .disabled(self.bluetoothManager.state != .connected)
         }
         .padding(.all, 100)
-    }
-    
-    private func handleSetSpeed() {
-        ButtonCommand(title: "speed", commands: [ "sid=0;cmd=set;speed=\(self.speed);" ]).run()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommandRow: View {
+struct ButtonCommandView: View {
     @State var command: ButtonCommand
     var body: some View {
         Button(command.title) {
@@ -18,6 +18,6 @@ struct CommandRow: View {
 
 struct CommandRow_Previews: PreviewProvider {
     static var previews: some View {
-        CommandRow(command: ButtonCommand(id: UUID(), title: "Start", commands: ["cmd1"]))
+        ButtonCommandView(command: ButtonCommand(id: UUID(), title: "Start", commands: ["cmd1"]))
     }
 }
