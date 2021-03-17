@@ -46,7 +46,10 @@ class BluetoothManager: ObservableObject {
     
     func send(_ msg: String) {
         print("BTM send: \(msg)")
-        serial.sendMessageToDevice(msg)
+        // for some reason, the HM10 module disconnects abruptly if we try to send more than 32 (or 33?) bytes at once. Split the
+        // message in chunks and send them consecutively, hoping that they are received in order.
+        let blocks = msg.splitBy(length: 32)
+        blocks.forEach(serial.sendMessageToDevice(_:))
     }
     
     func send(_ msgs: [String]) {
@@ -56,6 +59,23 @@ class BluetoothManager: ObservableObject {
     }
 }
 
+extension String {
+    func splitBy(length: Int) -> [String] {
+        var lines: [String] = []
+        var start = self.startIndex
+        let endIndex = self.endIndex
+       
+        while start != endIndex {
+            let end = self.index(start, offsetBy: length, limitedBy: endIndex) ?? endIndex
+           
+            lines.append(String(self[start..<end]))
+           
+            start = end
+        }
+       
+        return lines
+    }
+}
 
 
 extension BluetoothManager: BluetoothSerialDelegate {
