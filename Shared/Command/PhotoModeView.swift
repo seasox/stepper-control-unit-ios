@@ -14,8 +14,8 @@ struct PhotoModeView: View {
             TextCommandView(withLabel: true, command: .offset)
             TextCommandView(withLabel: true, command: .runtime)
             HStack {
-                ButtonCommandView(command: .runSMS)
-                ButtonCommandView(command: .stopSMS)
+                ButtonCommandView(command: .runSMS).padding()
+                ButtonCommandView(command: .stopSMS).padding()
             }
         }
     }

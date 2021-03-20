@@ -13,7 +13,7 @@ struct ConnectView: View {
     
     var body: some View {
         Button(self.bluetoothManager.state.description, action: handleConnect)
-            .padding(.all, 200)
+            .padding()
             .disabled(self.bluetoothManager.state == .unsupported)
     }
     
@@ -24,11 +24,10 @@ struct ConnectView: View {
             _ = bluetoothManager.startScan()
         }
     }
-    
 }
 
 struct ConnectView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectView()
+        ConnectView().environmentObject(BluetoothManager.shared)
     }
 }

@@ -13,12 +13,13 @@ struct TextCommandView: View {
     var body: some View {
         HStack {
             if withLabel {
-                Text(command.title)
+                Text(command.title).frame(width: 80, alignment: .leading)
             }
             TextField(command.title, text: $command.state, onCommit: command.run)
+            .padding()
             .frame(maxWidth: .infinity)
             .border(Color.red)
-        }
+        }.padding(.horizontal, 20)
     }
     
     init(withLabel l: Bool = false, command c: TextCommand) {
@@ -29,6 +30,6 @@ struct TextCommandView: View {
 
 struct TextCommandView_Previews: PreviewProvider {
     static var previews: some View {
-        TextCommandView(command: TextCommand(title: "Title", state: "State", commands: []))
+        TextCommandView(withLabel: true, command: TextCommand(title: "Title", state: "State", commands: []))
     }
 }
