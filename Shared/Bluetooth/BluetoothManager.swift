@@ -22,6 +22,7 @@ enum BluetoothState {
 class BluetoothManager: ObservableObject {
     
     @Published var state: BluetoothState = .unknown
+    @Published var logEntries: String = ""
     
     static let shared = BluetoothManager(serial: BluetoothSerial())
     
@@ -115,7 +116,7 @@ extension BluetoothManager: BluetoothSerialDelegate {
         }
     }
     func serialDidReceiveString(_ message: String) {
-        print("BTM did receive " + message)
+        logEntries.append(message)
     }
     func serialDidReceiveBytes(_ bytes: [UInt8]) {
         print("BTM did receive bytes")

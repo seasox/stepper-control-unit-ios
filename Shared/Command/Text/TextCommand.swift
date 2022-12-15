@@ -11,16 +11,31 @@ struct TextCommand: Identifiable, Codable, Hashable {
     var id = UUID()
     let title: String
     var state: String
-    let commands: [String]
+    let sid: Int
+    let cmd: String
+    
+    // FIXME: I miss you TCP :'(
+    mutating func update() {
+        let getter = "sid=\(sid);cmd=get;\(cmd);\r"
+        BluetoothManager.shared.send(getter)
+        state = BluetoothManager.shared
+            .logEntries
+            .split(whereSeparator: \.isNewline)
+            .map(String.init)
+            .last(where: { $0.starts(with: cmd + "=") })?.split(separator: "=")
+            .map(String.init)
+            .last ?? ""
+    }
     
     func run() {
-        BluetoothManager.shared.send(commands.map { cmd in cmd.replacingOccurrences(of: "%s", with: state) })
+        let setter = "sid=\(sid);cmd=set;\(cmd)=\(state);\r"
+        BluetoothManager.shared.send(setter)
     }
 }
 
 extension TextCommand {
-    static let speed = TextCommand(title: "Set Speed", state: "1000", commands: [ "sid=0;cmd=set;speed=%s;" ])
-    static let exposure = TextCommand(title: "Exposure", state: "1000", commands: [ "sid=0;cmd=set;exposure_time_ms=%s;" ])
-    static let offset = TextCommand(title: "Offset", state: "1000", commands: [ "sid=0;cmd=set;exposure_time_offset_ms=%s;" ])
-    static let runtime = TextCommand(title: "Runtime", state: "1000", commands: [ "sid=0;cmd=set;sms_pictures_amount=%s;" ])
+    static let speed = TextCommand(title: "Set Speed", state: "", sid: 0, cmd: "speed")
+    static let exposure = TextCommand(title: "Exposure", state: "", sid: 0, cmd: "exposure_time_ms")
+    static let offset = TextCommand(title: "Offset", state: "", sid: 0, cmd: "exposure_time_offset_ms")
+    static let runtime = TextCommand(title: "Runtime", state: "", sid: 0, cmd: "sms_pictures_amount")
 }

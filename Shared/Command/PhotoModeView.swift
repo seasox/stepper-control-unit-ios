@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PhotoModeView: View {
+    
+    @EnvironmentObject var bluetoothManager: BluetoothManager
+    
     var body: some View {
         VStack {
             TextCommandView(withLabel: true, command: .exposure)
@@ -17,12 +20,13 @@ struct PhotoModeView: View {
                 ButtonCommandView(command: .runSMS).padding()
                 ButtonCommandView(command: .stopSMS).padding()
             }
+            LogView()
         }
     }
 }
 
 struct PhotoModeView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoModeView()
+        PhotoModeView().environmentObject(BluetoothManager.shared)
     }
 }

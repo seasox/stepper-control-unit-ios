@@ -20,6 +20,7 @@ struct TextCommandView: View {
             .frame(maxWidth: .infinity)
             .border(Color.red)
         }.padding(.horizontal, 20)
+        //.onAppear { command.update() }
     }
     
     init(withLabel l: Bool = false, command c: TextCommand) {
@@ -30,6 +31,6 @@ struct TextCommandView: View {
 
 struct TextCommandView_Previews: PreviewProvider {
     static var previews: some View {
-        TextCommandView(withLabel: true, command: TextCommand(title: "Title", state: "State", commands: []))
+        TextCommandView(withLabel: true, command: TextCommand(title: "Title", state: "State", sid: 0, cmd: ""))
     }
 }

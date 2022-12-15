@@ -14,19 +14,30 @@ struct ContentView: View {
     var body: some View {
         if bluetoothManager.state == .connected {
             TabView {
-                VideoModeView(showsAddDialog: false)
-                    .tabItem {
-                        Image(systemName: "video.fill")
-                        Text("Video")
-                    }
-                PhotoModeView()
-                    .tabItem {
-                        Image(systemName: "camera.fill")
-                        Text("Photo")
-                    }
+                NavigationView {
+                    VideoModeView(showsAddDialog: false)
+                        .navigationTitle("Video")
+                        .disconnectButton(text: bluetoothManager.state.description, action: bluetoothManager.disconnect)
+                }
+                .tabItem {
+                    Image(systemName: "video.fill")
+                    Text("Video")
+                }
+                NavigationView {
+                    PhotoModeView()
+                        .navigationTitle("Video")
+                        .disconnectButton(text: bluetoothManager.state.description, action: bluetoothManager.disconnect)
+                }
+                .tabItem {
+                    Image(systemName: "camera.fill")
+                    Text("Photo")
+                }
             }
         } else {
-            ConnectView()
+            NavigationView {
+                ConnectView()
+                    .navigationTitle("Stepper Control Unit")
+            }
         }
     }
 }
@@ -37,3 +48,8 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+private extension View {
+    func disconnectButton(text: String, action: @escaping () -> ()) -> some View {
+        return navigationBarItems(trailing: Button(text, action: action))
+    }
+}

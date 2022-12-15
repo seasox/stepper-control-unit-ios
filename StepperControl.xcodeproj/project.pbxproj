@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		295C9FCE26063C4300B5D0F0 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C9FCD26063C4300B5D0F0 /* Color+hex.swift */; };
 		295C9FD42606404D00B5D0F0 /* View+isHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C9FD32606404D00B5D0F0 /* View+isHidden.swift */; };
+		295C9FDA260659ED00B5D0F0 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C9FD9260659ED00B5D0F0 /* LogView.swift */; };
+		295C9FDF26065A6900B5D0F0 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C9FD9260659ED00B5D0F0 /* LogView.swift */; };
 		29B0E34F26015533003384CE /* PhotoModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E34E26015533003384CE /* PhotoModeView.swift */; };
 		29B0E35026015533003384CE /* PhotoModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E34E26015533003384CE /* PhotoModeView.swift */; };
 		29B0E35626015573003384CE /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B0E35526015573003384CE /* ConnectView.swift */; };
@@ -59,6 +61,7 @@
 /* Begin PBXFileReference section */
 		295C9FCD26063C4300B5D0F0 /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		295C9FD32606404D00B5D0F0 /* View+isHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+isHidden.swift"; sourceTree = "<group>"; };
+		295C9FD9260659ED00B5D0F0 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		29B0E34E26015533003384CE /* PhotoModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModeView.swift; sourceTree = "<group>"; };
 		29B0E35526015573003384CE /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		29B0E36F26015BC9003384CE /* TextCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCommand.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 				29D4BFC725F2F7910030E874 /* ContentView.swift */,
 				29D4BFC825F2F7910030E874 /* Assets.xcassets */,
 				29D4C07B25F5AFBE0030E874 /* FilesManager.swift */,
+				295C9FD9260659ED00B5D0F0 /* LogView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -407,6 +411,7 @@
 				29D4BFEF25F2F7910030E874 /* StepperControlApp.swift in Sources */,
 				29D4C01725F2FCAF0030E874 /* ButtonCommand.swift in Sources */,
 				29B0E37026015BC9003384CE /* TextCommand.swift in Sources */,
+				295C9FDA260659ED00B5D0F0 /* LogView.swift in Sources */,
 				29D4C00825F2F8D90030E874 /* ButtonCommandView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +427,7 @@
 				29D4C09825F707030030E874 /* BluetoothSerial.swift in Sources */,
 				29D4C07D25F5AFBE0030E874 /* FilesManager.swift in Sources */,
 				29D4C0A025F709E60030E874 /* BluetoothManager.swift in Sources */,
+				295C9FDF26065A6900B5D0F0 /* LogView.swift in Sources */,
 				29B0E37C26015C82003384CE /* TextCommandView.swift in Sources */,
 				29D4BFF025F2F7910030E874 /* StepperControlApp.swift in Sources */,
 				29D4C01825F2FCAF0030E874 /* ButtonCommand.swift in Sources */,

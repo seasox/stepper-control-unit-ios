@@ -12,7 +12,7 @@ struct ButtonCommandView: View {
     var body: some View {
         Button(command.title) {
             command.run()
-        }.frame(width: 150).padding()
+        }.padding()
     }
 }
 

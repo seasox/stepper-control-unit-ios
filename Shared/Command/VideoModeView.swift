@@ -36,36 +36,13 @@ struct VideoModeView: View {
                 }
             }
             .disabled(self.bluetoothManager.state != .connected)
+            LogView()
         }
-        .padding(.all, 100)
     }
 }
 
 struct CommandList_Previews: PreviewProvider {
     static var previews: some View {
         VideoModeView(showsAddDialog: false).environmentObject(BluetoothManager.shared)
-    }
-}
-
-extension BluetoothState {
-    var description: String {
-        switch self {
-        case .unknown:
-            return "Unknown"
-        case .resetting:
-            return "Resetting"
-        case .unsupported:
-            return "Unsupported"
-        case .unauthorized:
-            return "Unauthorized"
-        case .poweredOff:
-            return "Powered off"
-        case .poweredOn:
-            return "Connect"
-        case .connecting:
-            return "Connecting..."
-        case .connected:
-            return "Disconnect"
-        }
     }
 }
